@@ -1,3 +1,5 @@
+using APIKeyManager.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,7 +7,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
+// for swagger
 builder.Services.AddSwaggerGen();
+
+// Add API Key Service
+builder.Services.AddSingleton<IApiKeyService, ApiKeyService>();
 
 var app = builder.Build();
 
